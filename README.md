@@ -1,4 +1,4 @@
-# 🎯 Vinted Multi-Sniper V2
+# 🎯 Vinted Sniper
 
 Un outil de sniping de pointe et ultra-réactif conçu avec **Next.js 14**, **TypeScript** et **Tailwind CSS**. Il permet de surveiller en parallèle des dizaines de configurations de filtres différentes sur Vinted et d'envoyer instantanément les nouveautés sur ton tableau de bord et tes salons **Discord** sans aucune perte d'alerte.
 
