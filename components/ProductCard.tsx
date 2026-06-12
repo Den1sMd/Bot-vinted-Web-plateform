@@ -1,4 +1,4 @@
-import { Product } from "../page";
+import { Product } from "@/app/page";
 
 interface ProductCardProps {
   product: Product;
