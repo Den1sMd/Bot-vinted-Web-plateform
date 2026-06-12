@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { webhookUrl } = body;
     
-    // RECOUVREMENT INTELLIGENT : On accepte "products" OU "product" mis dans un tableau
+    
     let productsList = [];
     if (body.products && Array.isArray(body.products)) {
       productsList = body.products;
@@ -23,8 +23,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: "Aucun produit à envoyer" });
     }
 
-    // Le reste du code (le découpage en chunks, la boucle for, etc.) reste strictement le même
-    // Remplace juste la variable "products" par "productsList" dans ton découpage en chunks :
+    
     const chunks = [];
     for (let i = 0; i < productsList.length; i += 10) {
       chunks.push(productsList.slice(i, i + 10));
@@ -32,11 +31,11 @@ export async function POST(request: NextRequest) {
 
 
     for (const chunk of chunks) {
-      // On construit les embeds pour ce paquet
+      
       const embeds = chunk.map((product: any) => ({
         title: `👕 ${product.title}`,
         url: product.link,
-        color: 1671190, // Vert Émeraude
+        color: 1671190,
         fields: [
           { name: "💰 Prix", value: `**${product.price.toFixed(2)} €**`, inline: true },
           { name: "📏 Taille", value: product.size, inline: true },
@@ -49,7 +48,7 @@ export async function POST(request: NextRequest) {
       }));
 
       const discordPayload = {
-        username: "Vinted Multi-Sniper",
+        username: "Vinted sniper",
         avatar_url: "https://www.vinted.fr/assets/favicon/favicon-32x32.png",
         embeds: embeds
       };
@@ -65,7 +64,7 @@ export async function POST(request: NextRequest) {
       if (response.status === 429) {
         const retryAfterData = await response.json();
         const waitTime = (retryAfterData.retry_after || 1) * 1000;
-        console.warn(`[Discord Rate Limit] Pause forcée de ${waitTime}ms`);
+        console.warn(`[Discord Rate Limit] Pause ${waitTime}ms`);
         await delay(waitTime);
         
      

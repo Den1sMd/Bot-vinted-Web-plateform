@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     
     const searchText = searchParams.get("search_text") || "";
-    const minPrice = searchParams.get("min_price") || ""; // Capturé depuis le Dashboard
+    const minPrice = searchParams.get("min_price") || "";
     const maxPrice = searchParams.get("max_price") || "";
     const catalogId = searchParams.get("catalog_id") || "";
     const sizeId = searchParams.get("size_id") || "";
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
       targetUrl += `&search_text=${encodeURIComponent(searchText)}`;
     }
     
-    // AJOUT DU PRIX MINIMUM VIA LE PARAMÈTRE VINTED "price_from"
+
     if (minPrice) {
       targetUrl += `&price_from=${minPrice}`;
     }
