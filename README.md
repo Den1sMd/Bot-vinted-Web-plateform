@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎯 Vinted Multi-Sniper V2
 
-## Getting Started
+Un outil de sniping de pointe et ultra-réactif conçu avec **Next.js 14**, **TypeScript** et **Tailwind CSS**. Il permet de surveiller en parallèle des dizaines de configurations de filtres différentes sur Vinted et d'envoyer instantanément les nouveautés sur ton tableau de bord et tes salons **Discord** sans aucune perte d'alerte.
 
-First, run the development server:
+---
 
+## ✨ Fonctionnalités Clés
+
+- **⚡ Surveillance Multi-Espaces Simultanée** : Créez autant d'onglets de recherche que vous le souhaitez. L'application interroge Vinted en arrière-plan pour chaque espace de manière indépendante.
+- **🎛️ Filtres Avancés & Adaptatifs** :
+  - Recherche par mots-clés précis.
+  - Sélection fine par catégorie (Hommes, Femmes, Enfants).
+  - **Arbre de tailles dynamique** : Les tailles s'adaptent selon la catégorie (affiche des pointures pour les baskets, des tailles américaines `W30` pour les jeans hommes, et du `S/M/L` pour le reste).
+  - Tranche de prix complète (Prix Minimum et Prix Maximum).
+  - Sélection multiple de l'état des articles (Neuf avec étiquette, Très bon état, etc.).
+- **🧹 Nettoyage Instantané** : À chaque modification ou sauvegarde d'un filtre, le flux est nettoyé instantanément pour ne laisser place qu'aux résultats frais.
+- **🔗 Intégration Discord Webhook Optimisée** :
+  - Optionnelle par espace de recherche (vous pouvez envoyer le flux de l'Espace A sur un salon Discord, et l'Espace B sur un autre).
+  - **Système Anti-Spam (Groupement par 10)** : L'API regroupe jusqu'à 10 articles par message pour éviter de saturer Discord.
+  - **Gestion intelligente du Rate Limit (Erreur 429)** : Si Discord demande de ralentir, l'application se met en pause automatiquement le temps nécessaire et renvoie le paquet sans perdre un seul article.
+- **🛡️ Mécanisme Anti-Anti-Bot** : Headers HTTP réalistes simulant un comportement humain pour minimiser les blocages (Erreurs `403 Forbidden`).
+
+---
+
+## 🛠️ Technologies Utilisées
+
+- **Framework** : [Next.js 14](https://nextjs.org/) (App Router)
+- **Langage** : [TypeScript](https://www.typescript.org/)
+- **Style** : [Tailwind CSS](https://tailwindcss.com/) (Thème Dark Mode moderne)
+- **Notifications** : Discord Webhooks (Rich Embeds & Boutons d'action)
+
+---
+
+## 🚀 Installation et Démarrage
+
+### 1. Prérequis
+Assurez-vous d'avoir [Node.js](https://nodejs.org/) (v18+) installé sur votre machine.
+
+### 2. Cloner le projet
 ```bash
+git clone [https://github.com/votre-compte/vinted-multi-sniper.git](https://github.com/votre-compte/vinted-multi-sniper.git)
+cd vinted-multi-sniper
+
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
